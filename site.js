@@ -86,6 +86,17 @@
     });
   });
 
+  // Мобильная кнопка: появляется после первого экрана и прячется, когда на экране форма заявки
+  var bar = document.querySelector('.mbar'), heroEl = document.querySelector('.hero');
+  if (bar && heroEl && 'IntersectionObserver' in window) {
+    var heroVisible = true, formVisible = false;
+    var sync = function () { bar.classList.toggle('off', heroVisible || formVisible); };
+    new IntersectionObserver(function (e) { heroVisible = e[0].isIntersecting; sync(); }, { threshold: 0.15 }).observe(heroEl);
+    var forms = document.querySelectorAll('[data-lead]');
+    if (forms.length) new IntersectionObserver(function (es) { formVisible = es.some(function (x) { return x.isIntersecting; }); sync(); }).observe(forms[0]);
+    sync();
+  }
+
   // Блок продажи: прячем мобильную кнопку, когда сайт уехал и открылся лендинг студии
   var site = document.querySelector('.site'), mbar = document.querySelector('.mbar');
   if (document.getElementById('pitch') && site && mbar) {

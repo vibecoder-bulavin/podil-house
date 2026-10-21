@@ -302,6 +302,64 @@ section.alt{background:var(--surface);border-top-color:transparent}
 .p-stay .kicker{color:var(--gold)}
 .p-stay .hero-full .kicker{color:#e8d6b8}
 
+/* ========== редизайн 2026-10-22: читаемость, ритм, мобильная версия ========== */
+/* первый экран: текст читается на любом фото */
+.hero-full::after{background:linear-gradient(to top,rgba(0,0,0,.86) 0%,rgba(0,0,0,.55) 45%,rgba(0,0,0,.3) 100%)}
+.hero-full h1,.hero-full .lead,.hero-full .kicker,.hero-full .trust{text-shadow:0 1px 18px rgba(0,0,0,.35)}
+.hero-full .lead{color:rgba(255,255,255,.9)}
+.hero-full .kicker{color:rgba(255,255,255,.8)}
+/* шапка поверх фото — прозрачная и белая */
+body:has(.hero-full) .top{position:absolute;top:0;left:0;right:0;z-index:5;border-bottom:0;color:#fff}
+body:has(.hero-full) .top .logo small,body:has(.hero-full) .top nav a{color:rgba(255,255,255,.8)}
+body:has(.hero-full) .top nav a:hover{color:#fff}
+.hero-full .wrap{padding-top:140px}
+
+/* отзывы — карточки */
+.reviews blockquote{position:relative}
+.reviews blockquote p{font-size:1.04rem}
+.reviews blockquote::before{content:"“";display:block;font-family:var(--head);font-size:3.4rem;line-height:.6;margin-bottom:10px;color:var(--gold)}
+
+/* галерея — без «сирот», на мобильном листается */
+.gallery img{border-radius:var(--rimg)}
+
+/* гостиницы: тёмный блок отзывов, удобства плитками */
+.p-stay .s-reviews{background:var(--accent);color:#f1eee7}
+.p-stay .s-reviews h2{color:#fff}
+.p-stay .reviews blockquote{border-top:0;padding:26px;border-radius:var(--rimg);background:rgba(255,255,255,.07)}
+.p-stay .reviews blockquote::before{color:#d9c39b}
+.p-stay .reviews footer{color:rgba(241,238,231,.7)}
+.amen{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.amen li{border-top:0;background:var(--surface);border-radius:12px;padding:16px 16px 16px 44px}
+.amen li::before{left:18px;top:22px}
+.room img{transition:transform .5s}
+.room:hover img{transform:scale(1.03)}
+.room{overflow:hidden}
+
+/* мобильная кнопка появляется после первого экрана */
+.mbar{transition:transform .3s,opacity .3s}
+.mbar.off{transform:translateY(140%);opacity:0;pointer-events:none}
+
+@media (max-width:820px){
+  main>section:not(.hero){padding:64px 0}
+  .logo{font-size:1.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+  .logo small{display:none}
+  .hero-full{min-height:88svh}
+  .hero-full .wrap{padding-top:110px;padding-bottom:36px}
+  h1{font-size:clamp(2.2rem,10vw,3rem)}
+  /* карточки листаются вбок, а не занимают по экрану */
+  .rooms,.gallery,.reviews{display:grid;grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:84%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;margin-right:-20px;padding-right:20px;columns:auto;scrollbar-width:none}
+  .rooms::-webkit-scrollbar,.gallery::-webkit-scrollbar,.reviews::-webkit-scrollbar{display:none}
+  .rooms>*,.gallery>*,.reviews>*{scroll-snap-align:start}
+  .gallery{grid-auto-columns:78%;grid-auto-rows:auto}
+  .gallery img,.gallery img:first-child{grid-column:auto;grid-row:auto;aspect-ratio:4/5}
+  .reviews blockquote{margin:0}
+  .rbody{padding:18px}
+  .room h3{font-size:1.25rem}
+  .amen{grid-template-columns:1fr 1fr}
+  .amen li{font-size:.9rem;padding:14px 12px 14px 36px}
+  .amen li::before{left:13px;top:20px}
+}
+
 /* ===== Мини-лендинг Bulavin Studio (только для сайтов на продаже) =====
    Механика: сайт (.site) лежит поверх, первый экран лендинга (.p-intro) прилипает под ним
    и открывается, когда сайт уезжает вверх. Остальные блоки (.p-body) наезжают поверх интро. */
