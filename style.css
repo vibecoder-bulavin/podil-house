@@ -371,3 +371,26 @@ section.alt{background:var(--surface);border-top-color:transparent}
   .pinc li,.psteps li{grid-template-columns:48px 1fr}
   .pbtn{width:100%;justify-content:center}
 }
+
+/* тарифы студии */
+.pplans-sec{grid-template-columns:1fr;gap:clamp(32px,4vw,56px)}
+.pplans-sec .ph2{position:static}
+.pplans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+.pplan{position:relative;display:flex;flex-direction:column;padding:clamp(26px,3vw,40px);border:1px solid var(--pline);border-radius:22px;background:rgba(243,239,232,.02)}
+.pplan.on{background:var(--pink);color:#0b0b0b;border-color:var(--pink)}
+.pplan.on h3,.pplan.on .pprice{color:#0b0b0b}
+.ptag{position:absolute;top:22px;right:22px;padding:5px 12px;border-radius:999px;background:var(--pacc);color:#0b0b0b;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.pplan h3{font-size:1.1rem;font-weight:500;margin:0 0 22px;padding-right:110px}
+.pprice{margin:0 0 14px;font-family:'Inter Tight',system-ui,sans-serif;font-weight:500;font-size:clamp(2.8rem,4.6vw,4.2rem);line-height:1;letter-spacing:-.04em;color:var(--pink)}
+.plead{margin:0 0 24px;color:var(--pmuted)}
+.pplan.on .plead{color:rgba(11,11,11,.66)}
+.pplan ul{list-style:none;margin:0 0 32px;padding:0;flex:1}
+.pplan li{padding:12px 0 12px 26px;border-top:1px solid var(--pline);position:relative;font-size:.96rem}
+.pplan.on li{border-top-color:rgba(11,11,11,.12)}
+.pplan li::before{content:"";position:absolute;left:2px;top:19px;width:10px;height:5px;border-left:1.5px solid var(--pacc);border-bottom:1.5px solid var(--pacc);transform:rotate(-45deg)}
+.pplan.on li::before{border-color:#0b0b0b}
+.pplan .pbtn{justify-content:center}
+.pplan.on .pbtn{background:#0b0b0b;color:var(--pink)}
+.pbtn.ghost{background:transparent;color:var(--pink);box-shadow:inset 0 0 0 1px var(--pline)}
+.pbtn.ghost:hover{background:rgba(243,239,232,.06)}
+@media (max-width:980px){.pplans{grid-template-columns:1fr}}
