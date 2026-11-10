@@ -437,6 +437,15 @@ body:has(.hero-full) .top nav a:hover{color:#fff}
   .pscroll{margin-top:16px}
 }
 @media (max-height:560px){.pscroll{display:none}}
+/* телефоны и планшеты: без эффекта шторки. Safari на iPhone считает высоту экрана иначе,
+   и p-body наезжал на интро раньше времени. Блоки идут обычным потоком. */
+@media (max-width:820px),(hover:none){
+  .pitch{margin-top:0}
+  .p-intro{position:relative;height:auto;display:block}
+  .p-intro .pwrap{padding:56px 0 36px}
+  .p-body{margin-top:0;box-shadow:none}
+  .pscroll{display:none}
+}
 
 /* тарифы студии */
 .pplans-sec{grid-template-columns:1fr;gap:clamp(32px,4vw,56px)}
